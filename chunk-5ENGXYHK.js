@@ -1,0 +1,1 @@
+import"./chunk-55KE2TB7.js";var o="taskID";var t=[{path:"",loadComponent:()=>import("./chunk-BGPKGOBV.js"),children:[{path:`:${o}`,loadComponent:()=>import("./chunk-6635GCUC.js")}]}],r=t;export{r as default};
