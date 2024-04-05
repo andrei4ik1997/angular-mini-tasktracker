@@ -13,7 +13,7 @@ import {provideServiceWorker} from '@angular/service-worker';
 import {provideEffects} from '@ngrx/effects';
 import {provideStore} from '@ngrx/store';
 import {provideStoreDevtools} from '@ngrx/store-devtools';
-import {MODULE_PROVIDERS, SERVICES} from './app.initializers';
+import {MODULE_PROVIDERS, SERVICES, TOKENS} from './app.initializers';
 import {APP_ROUTES} from './app.routes';
 import {storeConfig} from './store';
 
@@ -53,6 +53,7 @@ export const appConfig: ApplicationConfig = {
 		importProvidersFrom(modules),
 		...storeConfig.providers,
 		...MODULE_PROVIDERS,
+		...TOKENS,
 		...SERVICES,
 	],
 };

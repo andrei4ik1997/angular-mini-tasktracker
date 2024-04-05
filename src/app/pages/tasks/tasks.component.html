@@ -1,0 +1,32 @@
+<aside class="filters">
+	<filters
+		[tasksAssigners]="tasksAssigners()"
+		[taskStatuses]="taskStatuses()"
+		[tasksCount]="tasks()?.length ?? 0"
+		(filterChanged)="filterChanged.emit($event)"
+	/>
+</aside>
+
+<section class="tasks-container">
+	<action-panel
+		[disabled]="tasksLoadingStatus()?.loading"
+		(addNewTask)="addNewTask.emit($event)"
+		(sortChanged)="sortChanged.emit($event)"
+	/>
+
+	<div class="tasks">
+		@if (tasksLoadingStatus()?.loading) {
+			<spinner />
+		} @else {
+			@if (tasks()) {
+				@for (task of tasks(); track task?.id) {
+					<task class="tasks__task" [task]="task" (click)="openTask(task)" />
+				} @empty {
+					<no-data />
+				}
+			} @else {
+				<no-data />
+			}
+		}
+	</div>
+</section>

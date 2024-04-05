@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component, input} from '@angular/core';
 
 @Component({
 	selector: 'no-data',
@@ -8,4 +8,6 @@ import {ChangeDetectionStrategy, Component} from '@angular/core';
 	standalone: true,
 	imports: [],
 })
-export class NoDataComponent {}
+export class NoDataComponent {
+	public readonly size = input<'xs' | 's' | 'm' | 'l' | 'xl'>('xl');
+}

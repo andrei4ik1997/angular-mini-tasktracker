@@ -1,4 +1,4 @@
-import {LoadingStatuses} from '../interfaces';
+import {LoadingStatuses} from '@shared';
 
 export const loadingStatus: LoadingStatuses = {
 	default: {loading: false, loaded: false, error: null},

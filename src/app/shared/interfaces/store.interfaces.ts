@@ -1,8 +1,12 @@
 import {Params} from '@angular/router';
 import {ActionCreator, NotAllowedCheck} from '@ngrx/store';
 import {TypedAction} from '@ngrx/store/src/models';
+import {TASKS_FEATURE_KEY} from '@store/tasks/entities/constants';
+import {TasksState} from '@store/tasks/entities/interfaces';
 
-export interface AppStore {}
+export interface AppStore {
+	[TASKS_FEATURE_KEY]: TasksState;
+}
 
 export interface ErrorPayload {
 	error: string;

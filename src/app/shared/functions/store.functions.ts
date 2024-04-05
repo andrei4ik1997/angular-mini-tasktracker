@@ -3,8 +3,8 @@ import {Params} from '@angular/router';
 import {ActionCreatorProps, NotAllowedCheck, createAction, props} from '@ngrx/store';
 import {TypedAction} from '@ngrx/store/src/models';
 import {ToastService} from '@services';
+import {ApiActions, ApiActionsWithPayload, ErrorPayload} from '@shared';
 import {OperatorFunction, catchError, defer, map, of} from 'rxjs';
-import {ApiActions, ApiActionsWithPayload, ErrorPayload} from '../interfaces';
 
 export function getActionDescription(moduleName: string, description: string): string {
 	return `[${moduleName}] ${description}`;

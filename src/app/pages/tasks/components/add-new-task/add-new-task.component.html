@@ -1,0 +1,68 @@
+<h2 mat-dialog-title>Add new task</h2>
+
+<mat-dialog-content>
+	<form class="form" [formGroup]="taskFormGroup">
+		<mat-form-field>
+			<mat-label>Name</mat-label>
+			<input matInput formControlName="name" />
+		</mat-form-field>
+
+		<mat-form-field>
+			<mat-label>Title</mat-label>
+			<input matInput formControlName="title" />
+		</mat-form-field>
+
+		<mat-form-field>
+			<mat-label>Status</mat-label>
+			<mat-select formControlName="status" name="status">
+				@for (status of statuses; track status) {
+					<mat-option [value]="status">{{ status }}</mat-option>
+				}
+			</mat-select>
+		</mat-form-field>
+
+		<mat-form-field>
+			<mat-label>Priority</mat-label>
+			<mat-select formControlName="priority" name="priority">
+				@for (priority of priorities; track priority) {
+					<mat-option [value]="priority">{{ priority }}</mat-option>
+				}
+			</mat-select>
+		</mat-form-field>
+
+		<mat-form-field>
+			<mat-label>Assigner</mat-label>
+			<input
+				placeholder="Select Assigner"
+				matInput
+				formControlName="assigner"
+				type="text"
+				[matAutocomplete]="auto"
+			/>
+			<mat-autocomplete #auto="matAutocomplete">
+				@for (user of filteredUsers(); track user) {
+					<mat-option [value]="user">{{ user }}</mat-option>
+				} @empty {
+					<no-data size="xs" />
+				}
+			</mat-autocomplete>
+		</mat-form-field>
+
+		<mat-form-field>
+			<mat-label>Deadline</mat-label>
+			<input matInput formControlName="deadline" [matDatepicker]="datepicker" [min]="minDate()" />
+			<mat-datepicker-toggle matIconSuffix [for]="datepicker" />
+			<mat-datepicker #datepicker>
+				<mat-datepicker-actions>
+					<button mat-button matDatepickerCancel>Cancel</button>
+					<button mat-raised-button color="primary" matDatepickerApply>Apply</button>
+				</mat-datepicker-actions>
+			</mat-datepicker>
+		</mat-form-field>
+	</form>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+	<button mat-button (click)="close()">Cancel</button>
+	<button mat-button mat-flat-button color="primary" [disabled]="taskFormGroup.invalid" (click)="add()">Add</button>
+</mat-dialog-actions>

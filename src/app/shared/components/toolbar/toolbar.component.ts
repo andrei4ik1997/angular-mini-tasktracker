@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {RouterLink, RouterLinkActive} from '@angular/router';
-import {PageRoute} from '../../enums';
+import {PageRoute} from '@shared';
 
 @Component({
 	selector: 'toolbar',

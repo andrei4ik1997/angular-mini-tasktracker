@@ -1,0 +1,22 @@
+<mat-card>
+	<mat-card-header>
+		<mat-card-title>{{ task().title }}</mat-card-title>
+		<mat-card-subtitle>{{ task().name }}</mat-card-subtitle>
+	</mat-card-header>
+	<mat-card-content>
+		<p>
+			<span>Assigners: </span>
+			@for (assigner of task().assigners; track assigner; let isLast = $last) {
+				<span>{{ assigner }}</span>
+				@if (!isLast) {
+					<span>, </span>
+				}
+			} @empty {
+				<no-data size="xs" />
+			}
+		</p>
+		<p>Status: {{ task().status }}</p>
+		<p>Priority: {{ task().priority }}</p>
+		<p>Deadline: {{ task().deadline | date }}</p>
+	</mat-card-content>
+</mat-card>

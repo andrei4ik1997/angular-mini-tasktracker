@@ -1,0 +1,12 @@
+<button mat-flat-button color="primary" [disabled]="disabled()" (click)="openAddNewTaskDialog()">Add new task</button>
+
+<mat-form-field class="sort">
+	<mat-label>Sort by</mat-label>
+	<mat-select name="sort" [formControl]="sortFormControl">
+		<mat-option [value]="null">-</mat-option>
+
+		@for (sort of sortValues; track sort.field) {
+			<mat-option [value]="sort">{{ sort.viewValue }}</mat-option>
+		}
+	</mat-select>
+</mat-form-field>

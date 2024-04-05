@@ -1,0 +1,41 @@
+<div class="title">
+	<span>Filter</span>
+	<span>{{ tasksCount() }} tasks</span>
+</div>
+
+<div class="filters">
+	<div class="filters__filter">
+		<span class="filters__filter-title">Status:</span>
+		<mat-form-field class="filters__filter-field">
+			<mat-select multiple name="status" [formControl]="statusFormControl">
+				@for (status of taskStatuses(); track status) {
+					<mat-option [value]="status">{{ status }}</mat-option>
+				}
+			</mat-select>
+		</mat-form-field>
+	</div>
+	<div class="filters__filter">
+		<span class="filters__filter-title">Assigner:</span>
+		<mat-form-field class="filters__filter-field">
+			<mat-select multiple name="status" [formControl]="assignerFormControl">
+				@for (assigner of tasksAssigners(); track assigner) {
+					<mat-option [value]="assigner">{{ assigner }}</mat-option>
+				}
+			</mat-select>
+		</mat-form-field>
+	</div>
+
+	<div class="filters__filter">
+		<span class="filters__filter-title">Period:</span>
+		<mat-form-field class="filters__filter-field">
+			<mat-date-range-input [rangePicker]="picker" [formGroup]="range">
+				<input matStartDate placeholder="Start date" formControlName="start" />
+				<input matEndDate placeholder="End date" formControlName="end" />
+			</mat-date-range-input>
+			<mat-datepicker-toggle matIconSuffix [for]="picker" />
+			<mat-date-range-picker #picker />
+		</mat-form-field>
+	</div>
+
+	<button mat-flat-button color="primary" (click)="clear()">Clear</button>
+</div>

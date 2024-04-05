@@ -26,9 +26,6 @@
       "@store/*": [
         "./src/app/store/*"
       ],
-      "@pages/*": [
-        "./src/app/pages/*"
-      ],
       "@services": [
         "./src/app/services/index.ts"
       ],
